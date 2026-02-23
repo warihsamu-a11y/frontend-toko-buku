@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Buku Sam - Katalog Buku Online</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/product-catalog.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1>📚 Toko Buku Sam</h1>
+                </div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Cari buku, penulis, atau kategori...">
+                    <button id="searchBtn" class="btn-search">Cari</button>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" id="cartBtn" title="Keranjang Belanja">
+                        🛒 <span class="cart-count" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Filter & Sort -->
+            <div class="header-bottom">
+                <div class="filter-section">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">Semua Kategori</option>
+                        <option value="fiksi">Fiksi</option>
+                        <option value="nonfiksi">Non-Fiksi</option>
+                        <option value="pendidikan">Pendidikan</option>
+                        <option value="anak-anak">Anak-Anak</option>
+                        <option value="biografi">Biografi</option>
+                    </select>
+                    
+                    <select id="sortFilter" class="filter-select">
+                        <option value="terbaru">Produk Terbaru</option>
+                        <option value="harga-rendah">Harga: Rendah ke Tinggi</option>
+                        <option value="harga-tinggi">Harga: Tinggi ke Rendah</option>
+                        <option value="rating">Rating Tertinggi</option>
+                    </select>
+                    
+                    <input type="range" id="priceRange" class="price-range" min="0" max="500000" value="500000">
+                    <span id="priceDisplay">Harga: Rp0 - Rp500.000</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="filter-widget">
+                    <h3>Filter Harga</h3>
+                    <div class="price-filter">
+                        <input type="number" id="minPrice" placeholder="Harga Min" value="0">
+                        <input type="number" id="maxPrice" placeholder="Harga Max" value="500000">
+                        <button class="btn-primary" id="applyPriceFilter">Terapkan</button>
+                    </div>
+                </div>
+
+                <div class="filter-widget">
+                    <h3>Penerbit</h3>
+                    <div class="publisher-filter">
+                        <label><input type="checkbox" value="gramedia" class="publisher-check"> Gramedia</label>
+                        <label><input type="checkbox" value="erlangga" class="publisher-check"> Erlangga</label>
+                        <label><input type="checkbox" value="mizan" class="publisher-check"> Mizan</label>
+                        <label><input type="checkbox" value="kompas" class="publisher-check"> Kompas Gramedia</label>
+                    </div>
+                </div>
+
+                <div class="filter-widget">
+                    <h3>Rating</h3>
+                    <div class="rating-filter">
+                        <label><input type="checkbox" value="5" class="rating-check"> ⭐⭐⭐⭐⭐ 5 Bintang</label>
+                        <label><input type="checkbox" value="4" class="rating-check"> ⭐⭐⭐⭐ 4+ Bintang</label>
+                        <label><input type="checkbox" value="3" class="rating-check"> ⭐⭐⭐ 3+ Bintang</label>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Product Grid -->
+            <section class="product-section">
+                <div class="section-header">
+                    <h2>Koleksi Buku Terlengkap</h2>
+                    <p id="resultCount">Menampilkan semua produk</p>
+                </div>
+
+                <div class="product-grid" id="productGrid">
+                    <!-- Products will be loaded here by JavaScript -->
+                    <div class="loading">Memuat produk...</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Product Modal Detail (untuk quick view) -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalImage" src="" alt="Buku">
+                </div>
+                <div class="modal-info">
+                    <h2 id="modalTitle"></h2>
+                    <p id="modalAuthor" class="author-info"></p>
+                    <div class="modal-rating">
+                        <span id="modalRating"></span>
+                        <span id="modalReviewCount"></span>
+                    </div>
+                    <h3 id="modalPrice" class="price"></h3>
+                    <p id="modalDescription"></p>
+                    <div class="modal-details">
+                        <p><strong>Penerbit:</strong> <span id="modalPublisher"></span></p>
+                        <p><strong>Tahun:</strong> <span id="modalYear"></span></p>
+                        <p><strong>Halaman:</strong> <span id="modalPages"></span></p>
+                        <p><strong>Stok:</strong> <span id="modalStock"></span></p>
+                    </div>
+                    <div class="modal-actions">
+                        <input type="number" id="modalQuantity" min="1" value="1" style="width: 60px;">
+                        <button class="btn-primary btn-large" id="modalAddCart">Tambah ke Keranjang</button>
+                        <a href="#" id="modalViewDetail" class="btn-secondary btn-large">Lihat Detail Lengkap</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tentang Kami</h4>
+                    <p>Toko Buku Sam menyediakan koleksi buku terlengkap dengan harga terbaik.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan Pelanggan</h4>
+                    <ul>
+                        <li><a href="#">Hubungi Kami</a></li>
+                        <li><a href="#">Kebijakan Pengembalian</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Ikuti Kami</h4>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Toko Buku Sam. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/product-service.js"></script>
+    <script src="assets/js/cart-service.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

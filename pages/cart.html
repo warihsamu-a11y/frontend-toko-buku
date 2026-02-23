@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keranjang Belanja - Toko Buku Sam</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/cart.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <h1><a href="../index.html" style="color: white; text-decoration: none;">📚 Toko Buku Sam</a></h1>
+                </div>
+                <div style="flex: 1;"></div>
+                <div class="header-actions">
+                    <button class="btn-icon" onclick="window.location.href='../index.html'" title="Lanjut Belanja">
+                        📚 Lanjut Belanja
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <h1>🛒 Keranjang Belanja Anda</h1>
+
+            <div class="cart-container">
+                <!-- Cart Items -->
+                <section class="cart-items">
+                    <div id="cartItemsContainer">
+                        <!-- Cart items will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Cart Summary -->
+                <aside class="cart-summary">
+                    <div class="summary-card">
+                        <h3>Ringkasan Pesanan</h3>
+                        
+                        <div class="summary-line">
+                            <span>Subtotal</span>
+                            <span id="subtotalAmount">Rp 0</span>
+                        </div>
+                        
+                        <div class="summary-line">
+                            <span>Pajak (10%)</span>
+                            <span id="taxAmount">Rp 0</span>
+                        </div>
+
+                        <div class="summary-line">
+                            <span>Ongkir</span>
+                            <span id="shippingAmount">Rp 25.000</span>
+                        </div>
+
+                        <div class="shipping-note" id="shippingNote">
+                            Gratis ongkir untuk pembelian >Rp 100.000
+                        </div>
+
+                        <div class="coupon-section">
+                            <label>Kode Kupon (Opsional):</label>
+                            <div class="coupon-input">
+                                <input type="text" id="couponCode" placeholder="Masukkan kode kupon">
+                                <button class="btn-apply" id="applyCoupon">Terapkan</button>
+                            </div>
+                            <div class="coupon-help">
+                                <small>Coba: PROMO10, PROMO20, atau GRATIS</small>
+                            </div>
+                        </div>
+
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span id="totalAmount">Rp 0</span>
+                        </div>
+
+                        <button class="btn-checkout" id="checkoutBtn">💳 Lanjut ke Pembayaran</button>
+
+                        <div class="trust-info">
+                            <div class="trust-item">✓ Pembayaran Aman</div>
+                            <div class="trust-item">✓ Produk Original</div>
+                            <div class="trust-item">✓ Garansi Uang Kembali</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modals -->
+    <!-- Cart Empty Modal -->
+    <div class="empty-state-modal">
+        <div style="text-align: center; padding: 40px;">
+            <div style="font-size: 80px; margin-bottom: 20px;">🛍️</div>
+            <h2>Keranjang Belanja Anda Kosong</h2>
+            <p style="color: var(--gray-text); margin-bottom: 20px;">Mulai belanja dan temukan buku favorit Anda!</p>
+            <a href="../index.html" class="btn-primary btn-large" style="display: inline-block;">🔍 Jelajahi Koleksi Buku</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Tentang Kami</h4>
+                    <p>Toko Buku Sam menyediakan koleksi buku terlengkap dengan harga terbaik.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Hubungi Kami</a></li>
+                        <li><a href="#">Kebijakan Retur</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Toko Buku Sam. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/product-service.js"></script>
+    <script src="../assets/js/cart-service.js"></script>
+    <script src="../assets/js/cart.js"></script>
+</body>
+</html>
