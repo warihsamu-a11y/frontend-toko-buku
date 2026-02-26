@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "toko-buku-sam",
   "version": "1.0.0",
   "description": "Frontend e-commerce application for Toko Buku Sam (Sam Bookstore)",
