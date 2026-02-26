@@ -200,7 +200,7 @@ class App {
 
         card.innerHTML = `
             <div class="product-image">
-                ${product.image}
+                <img src="${product.image}" alt="${product.title}" class="book-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22225%22%3E%3Crect fill=%22%23ccc%22 width=%22150%22 height=%22225%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2214%22%3E📚 No Image%3C/text%3E%3C/svg%3E'">
                 ${newBadge}
                 ${discountBadge}
             </div>
@@ -322,9 +322,11 @@ class App {
         const product = productService.getProductById(productId);
         if (!product) return;
 
-        document.getElementById('modalImage').src = '#';
-        document.getElementById('modalImage').textContent = product.image;
-        document.getElementById('modalImage').style.fontSize = '120px';
+        document.getElementById('modalImage').src = product.image;
+        document.getElementById('modalImage').alt = product.title;
+        document.getElementById('modalImage').onerror = function() {
+            this.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22300%22%3E%3Crect fill=%22%23ccc%22 width=%22200%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2216%22%3E📚%3C/text%3E%3C/svg%3E';
+        };
         document.getElementById('modalTitle').textContent = product.title;
         document.getElementById('modalAuthor').textContent = `Penulis: ${product.author}`;
         document.getElementById('modalRating').innerHTML = `

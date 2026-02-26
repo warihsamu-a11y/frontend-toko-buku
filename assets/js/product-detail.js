@@ -46,7 +46,7 @@ class ProductDetailPage {
         document.getElementById('productBreadcrumb').textContent = this.product.title;
         
         // Image
-        document.getElementById('productImageLarge').textContent = this.product.image;
+        document.getElementById('productImageLarge').innerHTML = `<img src="${this.product.image}" alt="${this.product.title}" class="detail-book-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22400%22%3E%3Crect fill=%22%23ccc%22 width=%22300%22 height=%22400%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2220%22%3E📚%3C/text%3E%3C/svg%3E'">`;
 
         // Rating
         document.getElementById('productStars').textContent = productService.getStarRating(this.product.rating);
@@ -209,7 +209,7 @@ class ProductDetailPage {
         };
 
         card.innerHTML = `
-            <div class="product-image">${product.image}</div>
+            <div class="product-image"><img src="${product.image}" alt="${product.title}" class="review-book-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22150%22%3E%3Crect fill=%22%23ccc%22 width=%22100%22 height=%22150%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23999%22 font-size=%2212%22%3E📚%3C/text%3E%3C/svg%3E'"></div>
             <div class="product-info">
                 <div class="product-title">${product.title}</div>
                 <div class="product-author">${product.author}</div>
